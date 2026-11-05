@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ClipForge Studio turns podcasts, interviews and long-form videos into polished short-form content for social media.">
+  <meta name="theme-color" content="#101426">
+  <title>ClipForge Studio | Turn long videos into standout short content</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#101426; --muted:#697087; --paper:#f7f8fc; --white:#fff;
+      --violet:#7767f5; --cyan:#61d8e7; --line:#e6e8f0; --dark:#101426;
+      --radius:22px; --shadow:0 18px 55px rgba(18,24,49,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:-.7px}
+    .brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--violet),#4c43b9);display:grid;place-items:center;color:white;font-size:20px;box-shadow:0 8px 18px #7767f544}
+    .brand span{font-size:18px}
+    .brand small{display:block;font:600 9px "DM Sans",sans-serif;letter-spacing:3px;color:#858ba0;margin-top:-4px}
+    .navlinks{display:flex;align-items:center;gap:30px;color:#596077;font-size:14px;font-weight:600}
+    .navlinks a:hover{color:var(--violet)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 20px;border-radius:12px;background:var(--violet);color:white;font-weight:700;font-size:14px;box-shadow:0 9px 20px #7767f533;transition:.2s}
+    .btn:hover{transform:translateY(-2px);background:#6555e8}
+    .btn.dark{background:var(--ink);box-shadow:none}
+    .hero{padding:70px 0 88px;display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid #dedcfb;border-radius:99px;color:#6254d7;background:#f0efff;font-size:12px;font-weight:700;letter-spacing:.4px}
+    .dot{width:7px;height:7px;border-radius:50%;background:#7767f5;box-shadow:0 0 0 4px #7767f51b}
+    h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.12;letter-spacing:-1.4px}
+    h1{font-size:clamp(43px,5.5vw,66px);margin:22px 0 20px;max-width:620px}
+    h1 em{font-style:normal;color:var(--violet)}
+    .hero-copy{font-size:17px;color:#697087;max-width:520px;line-height:1.75}
+    .hero-actions{display:flex;gap:13px;align-items:center;margin-top:30px;flex-wrap:wrap}
+    .micro{margin-top:17px;color:#8990a3;font-size:12px}
+    .visual{position:relative;min-height:460px;border-radius:30px;background:linear-gradient(145deg,#171d37,#252b50 60%,#423d80);overflow:hidden;box-shadow:0 28px 65px #18204430;padding:28px;color:white}
+    .visual:before{content:"";position:absolute;width:330px;height:330px;border-radius:50%;background:#796cff;filter:blur(90px);opacity:.35;right:-70px;top:-90px}
+    .visual:after{content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:#55d9e7;filter:blur(95px);opacity:.22;left:-100px;bottom:-80px}
+    .visual-top{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#c5c9dc}
+    .live{border:1px solid #ffffff35;border-radius:99px;padding:6px 10px}
+    .video-stack{position:relative;z-index:1;margin:38px auto 0;width:78%;height:285px}
+    .clip{position:absolute;border:1px solid #ffffff30;border-radius:18px;overflow:hidden;box-shadow:0 18px 35px #080d25aa}
+    .clip.back{width:62%;height:80%;left:0;top:8%;transform:rotate(-8deg);background:linear-gradient(145deg,#e8b69c,#9b5c65 55%,#382e58)}
+    .clip.front{width:66%;height:92%;right:0;top:0;transform:rotate(5deg);background:linear-gradient(145deg,#b8d7dc,#537e91 45%,#222c53)}
+    .clip-shape{position:absolute;inset:0;background:linear-gradient(0deg,#0b1024c9,transparent 65%)}
+    .person{position:absolute;left:32%;top:14%;width:37%;height:55%;border-radius:48% 48% 28% 28%;background:linear-gradient(130deg,#f1c9ae,#9a6471);box-shadow:0 8px 25px #12152c55}
+    .person:before{content:"";position:absolute;width:115%;height:48%;left:-7%;top:-10%;border-radius:50% 50% 35% 35%;background:#302a46}
+    .caption{position:absolute;bottom:27px;left:12px;right:12px;text-align:center;font-family:"Space Grotesk";font-size:16px;font-weight:700;text-shadow:0 2px 5px #000}
+    .caption b{background:#7767f5;padding:3px 7px;border-radius:4px}
+    .timeline{position:relative;z-index:1;margin-top:20px;border:1px solid #ffffff28;background:#ffffff0c;border-radius:12px;padding:12px}
+    .timeline-label{display:flex;justify-content:space-between;color:#c3c7d8;font-size:10px;margin-bottom:9px}
+    .track{height:6px;border-radius:8px;background:#ffffff25;overflow:hidden}
+    .track span{display:block;width:68%;height:100%;background:linear-gradient(90deg,var(--violet),var(--cyan));border-radius:8px}
+    .section{padding:82px 0}
+    .section.white{background:white}
+    .section-head{text-align:center;max-width:650px;margin:0 auto 42px}
+    .kicker{color:var(--violet);font-weight:700;text-transform:uppercase;letter-spacing:1.8px;font-size:11px}
+    h2{font-size:clamp(32px,4vw,45px);margin:12px 0}
+    .section-head p{color:var(--muted);font-size:16px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 8px 24px #19204408}
+    .icon{width:46px;height:46px;border-radius:14px;background:#f0efff;color:var(--violet);display:grid;place-items:center;font-size:22px;margin-bottom:20px}
+    h3{font-size:20px;letter-spacing:-.5px;margin:0 0 10px}
+    .card p{color:var(--muted);font-size:14px;margin:0}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step}
+    .step{padding:24px 0;border-top:1px solid var(--line);counter-increment:step}
+    .step:before{content:"0" counter(step);display:block;color:var(--violet);font:700 13px "Space Grotesk";margin-bottom:18px}
+    .step p{color:var(--muted);font-size:14px}
+    .showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .sample{border-radius:20px;overflow:hidden;min-height:275px;position:relative;padding:18px;color:white;display:flex;align-items:end;background:linear-gradient(155deg,#c1a2c9,#604f91 60%,#1d2445)}
+    .sample:nth-child(2){background:linear-gradient(155deg,#f0c49d,#a75f65 60%,#372d52)}
+    .sample:nth-child(3){background:linear-gradient(155deg,#a8d8d8,#4d8290 55%,#202b51)}
+    .sample:before{content:"";position:absolute;width:145px;height:180px;top:25px;left:calc(50% - 72px);border-radius:70px 70px 35px 35px;background:#ffffff28;border:1px solid #ffffff45}
+    .sample:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(0deg,#101426df,transparent)}
+    .sample-content{position:relative;z-index:1}
+    .sample-label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#e0defd;font-weight:700}
+    .sample strong{display:block;font:700 20px "Space Grotesk";line-height:1.15;margin-top:7px}
+    .sample-note{font-size:11px;color:#d5d7e7;margin-top:6px}
+    .notice{font-size:12px;color:#858ba0;text-align:center;margin-top:18px}
+    .cta{background:linear-gradient(120deg,#171d37,#39356f);color:white;border-radius:28px;padding:52px;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center}
+    .cta h2{margin:0 0 12px}
+    .cta p{color:#c5c9dc;margin:0;max-width:580px}
+    .cta .btn{background:white;color:#302a72;box-shadow:none;white-space:nowrap}
+    footer{padding:30px 0;color:#8a90a2;font-size:12px}
+    .foot{display:flex;justify-content:space-between;align-items:center;gap:15px}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:35px;padding-top:45px}.visual{min-height:420px}.cards,.steps,.showcase{grid-template-columns:1fr 1fr}.cta{grid-template-columns:1fr;padding:38px}}
+    @media(max-width:600px){.nav{height:70px}.navlinks a:not(.btn){display:none}.navlinks{gap:0}.hero{padding:38px 0 60px}.visual{min-height:390px;padding:20px}.video-stack{width:90%;height:250px}.cards,.steps,.showcase{grid-template-columns:1fr}.section{padding:60px 0}.cta{padding:30px 24px}.foot{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="#top" aria-label="ClipForge Studio home">
+      <div class="brand-mark">▶</div>
+      <div><span>CLIPFORGE</span><small>STUDIO</small></div>
+    </a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="#services">Services</a><a href="#process">How it works</a><a href="#samples">Samples</a>
+      <a class="btn" href="#contact">Let's talk <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> SHORT-FORM VIDEO EDITING</div>
+        <h1>Make your best moments <em>go further.</em></h1>
+        <p class="hero-copy">We turn podcasts, interviews and long-form videos into polished short clips designed for social media. More ways to share your ideas, without starting from scratch.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#contact">Discuss a project <span>↗</span></a>
+          <a class="btn dark" href="#services">Explore services</a>
+        </div>
+        <div class="micro">For podcast producers · marketing agencies · creators</div>
+      </div>
+      <div class="visual" aria-label="Illustration of short-form video clips being edited">
+        <div class="visual-top"><span>CLIPFORGE / EDIT SUITE</span><span class="live">● READY TO CREATE</span></div>
+        <div class="video-stack">
+          <div class="clip back"><div class="person"></div><div class="clip-shape"></div><div class="caption">IDEAS WORTH <b>SHARING</b></div></div>
+          <div class="clip front"><div class="person" style="background:linear-gradient(130deg,#e8c6a9,#8a5960);left:30%;width:40%;height:57%"></div><div class="clip-shape"></div><div class="caption">MAKE EVERY <b>SECOND</b> COUNT</div></div>
+        </div>
+        <div class="timeline"><div class="timeline-label"><span>YOUR LONG-FORM VIDEO</span><span>00:42 / 01:15</span></div><div class="track"><span></span></div></div>
+      </div>
+    </section>
+
+    <section class="section white" id="services">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">What we do</div><h2>One recording. More ways to connect.</h2><p>Thoughtful editing that helps your existing content work harder across the platforms your audience uses.</p></div>
+        <div class="cards">
+          <article class="card"><div class="icon">▣</div><h3>Podcast clips</h3><p>Turn interviews and conversations into concise highlights that make people want to watch more.</p></article>
+          <article class="card"><div class="icon">✦</div><h3>Short-form editing</h3><p>Vertical videos for YouTube Shorts, Instagram Reels and TikTok, shaped around your message.</p></article>
+          <article class="card"><div class="icon">CC</div><h3>Captions & polish</h3><p>Readable subtitles, clean pacing, simple transitions and formatting for mobile viewing.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">A simple workflow</div><h2>Easy to get started.</h2><p>A clear process, from your source footage to ready-to-review clips.</p></div>
+        <div class="steps">
+          <article class="step"><h3>Share your footage</h3><p>Send a video file or a link to footage you own or have permission to use, along with your goals.</p></article>
+          <article class="step"><h3>We shape the clips</h3><p>We identify strong moments, edit for vertical viewing and add captions based on the agreed brief.</p></article>
+          <article class="step"><h3>Review & deliver</h3><p>You review the drafts, request the agreed revisions and receive final files ready to publish.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="samples">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Creative direction</div><h2>Built for the vertical feed.</h2><p>We focus on clear hooks, readable captions and clean framing that keeps the message front and centre.</p></div>
+        <div class="showcase">
+          <div class="sample"><div class="sample-content"><div class="sample-label">Podcast highlight</div><strong>The one idea<br>that changes everything</strong><div class="sample-note">Vertical format · Captions</div></div></div>
+          <div class="sample"><div class="sample-content"><div class="sample-label">Expert insight</div><strong>Three things<br>to know first</strong><div class="sample-note">Short-form edit · Hook</div></div></div>
+          <div class="sample"><div class="sample-content"><div class="sample-label">Founder story</div><strong>Why we started<br>the business</strong><div class="sample-note">Social clip · Subtitles</div></div></div>
+        </div>
+        <p class="notice">Illustrative design concepts only — not client work or finished video samples.</p>
+      </div>
+    </section>
+
+    <section class="wrap" id="contact" style="padding-top:70px;padding-bottom:45px">
+      <div class="cta">
+        <div><div class="kicker" style="color:#b9b2ff">Have footage ready?</div><h2>Let's make more of it.</h2><p>Tell us what you're creating and what kind of clips you need. We'll discuss the scope and provide a clear quote before work begins.</p></div>
+        <a class="btn" href="mailto:eddie282002@gmail.com?subject=ClipForge%20Studio%20project%20enquiry">Email ClipForge ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="foot"><a class="brand" href="#top"><div class="brand-mark">▶</div><div><span>CLIPFORGE</span><small>STUDIO</small></div></a><span>© <span id="year"></span> ClipForge Studio. All rights reserved.</span><span>Independent video editing studio</span></div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
